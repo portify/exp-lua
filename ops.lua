@@ -79,11 +79,19 @@ return {
   out = function(stack) print(pop(stack)) end,
 
   -- math
-  ["+"] = function(stack)
-    local rhs = pop(stack)
-    local lhs = pop(stack)
-    push(stack, lhs + rhs)
-  end,
+  ["+"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l + r) end,
+  ["-"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l - r) end,
+  ["*"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l * r) end,
+  ["/"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l / r) end,
+  ["^"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l ^ r) end,
+  ["%"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l % r) end,
+  [".."] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l .. r) end,
+  ["=="] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l == r) end,
+  ["~="] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l ~= r) end,
+  ["<="] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l <= r) end,
+  [">="] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l >= r) end,
+  ["<"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l < r) end,
+  [">"] = function(stack) local r, l = pop(stack), pop(stack) push(stack, l > r) end,
   ["-"] = function(stack)
     local rhs = pop(stack)
     local lhs = pop(stack)
